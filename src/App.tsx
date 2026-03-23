@@ -14,6 +14,7 @@ import Blog from './pages/Blog';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import ScrollToTop from './components/ScrollToTop';
+import CookieConsent from './components/CookieConsent';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -40,6 +41,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <CookieConsent />
       <AnimatedRoutes />
     </BrowserRouter>
   );

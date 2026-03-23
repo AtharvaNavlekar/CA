@@ -70,6 +70,36 @@ function FAQItem({ question, answer }: { question: string, answer: string }) {
 }
 
 export default function Contact() {
+  const [formData, setFormData] = useState({ name: '', phone: '', email: '', message: '' });
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('submitting');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong');
+      }
+
+      setStatus('success');
+      setFormData({ name: '', phone: '', email: '', message: '' });
+    } catch (error: any) {
+      setStatus('error');
+      setErrorMessage(error.message || 'Failed to send message. Please try again.');
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -114,13 +144,15 @@ export default function Contact() {
                   <MessageSquare className="w-4 h-4 text-primary" /> We typically reply within 2 hours.
                 </p>
               </div>
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-gray-900 ml-1">Full Name</label>
                     <input
                       type="text"
                       id="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
                       className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-black/5 focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
                       placeholder="John Doe"
                       required
@@ -131,6 +163,8 @@ export default function Contact() {
                     <input
                       type="tel"
                       id="phone"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
                       className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-black/5 focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
                       placeholder="+91 98765 43210"
                       required
@@ -142,6 +176,8 @@ export default function Contact() {
                   <input
                     type="email"
                     id="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
                     className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-black/5 focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
                     placeholder="john@example.com"
                   />
@@ -151,16 +187,32 @@ export default function Contact() {
                   <textarea
                     id="message"
                     rows={4}
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
                     className="w-full px-5 py-4 rounded-2xl bg-gray-50 border border-black/5 focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none resize-none"
                     placeholder="Tell us about your financial needs..."
                     required
                   ></textarea>
                 </div>
+                
+                {status === 'success' && (
+                  <div className="p-4 bg-green-50 text-green-700 rounded-2xl border border-green-100 text-sm">
+                    Thank you for your message. We will get back to you soon.
+                  </div>
+                )}
+                
+                {status === 'error' && (
+                  <div className="p-4 bg-red-50 text-red-700 rounded-2xl border border-red-100 text-sm">
+                    {errorMessage}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full flex justify-center items-center gap-2 bg-primary text-white px-8 py-4 rounded-2xl font-medium hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                  disabled={status === 'submitting'}
+                  className="w-full flex justify-center items-center gap-2 bg-primary text-white px-8 py-4 rounded-2xl font-medium hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 disabled:opacity-70 disabled:hover:translate-y-0"
                 >
-                  Submit Request <ArrowRight className="w-4 h-4" />
+                  {status === 'submitting' ? 'Sending...' : 'Submit Request'} <ArrowRight className="w-4 h-4" />
                 </button>
                 <p className="text-xs text-center text-gray-400 mt-4 flex items-center justify-center gap-1">
                   <ShieldCheck className="w-3 h-3" /> Your information is secure and encrypted.

@@ -42,22 +42,27 @@ export default function Privacy() {
             We use the information we collect to provide, maintain, and improve our financial consulting services. This includes communicating with you, responding to your inquiries, providing tailored financial advice, and ensuring compliance with applicable legal and regulatory requirements.
           </p>
 
-          <h2 className="text-2xl font-display font-medium text-primary mt-12 mb-6">3. Information Sharing and Disclosure</h2>
+          <h2 className="text-2xl font-display font-medium text-primary mt-12 mb-6">3. AI Assistant and Data Processing</h2>
           <p className="mb-6">
-            We do not sell or rent your personal information to third parties. We may share your information with trusted service providers who assist us in operating our business, provided that those parties agree to keep this information confidential. We may also disclose information when required by law or to protect our rights and safety.
+            Our website utilizes Google's Gemini AI to power our interactive assistant features. When you interact with our AI assistant, your chat messages are processed by Google's servers, which may be located in the United States. We do not use your personal data to train these AI models. By using our AI features, you consent to this data processing. Please do not share sensitive personal or financial information (like bank account numbers or passwords) with the AI assistant.
           </p>
 
-          <h2 className="text-2xl font-display font-medium text-primary mt-12 mb-6">4. Data Security</h2>
+          <h2 className="text-2xl font-display font-medium text-primary mt-12 mb-6">4. Information Sharing and Disclosure</h2>
           <p className="mb-6">
-            We implement appropriate technical and organizational measures to protect the security of your personal information. However, please note that no method of transmission over the Internet or method of electronic storage is 100% secure.
+            We do not sell or rent your personal information to third parties. We may share your information with trusted service providers (such as Google Cloud for hosting and AI services) who assist us in operating our business, provided that those parties agree to keep this information confidential. We may also disclose information when required by law or to protect our rights and safety.
           </p>
 
-          <h2 className="text-2xl font-display font-medium text-primary mt-12 mb-6">5. Your Rights</h2>
+          <h2 className="text-2xl font-display font-medium text-primary mt-12 mb-6">5. Data Security & DPDP Act Compliance</h2>
           <p className="mb-6">
-            You have the right to access, correct, or delete your personal information held by us. If you wish to exercise these rights or have any questions about our privacy practices, please contact us at contact@bhosaleandco.in.
+            We implement appropriate technical and organizational measures to protect the security of your personal information in accordance with India's Digital Personal Data Protection (DPDP) Act, 2023. We collect only the data necessary for our services and retain it only as long as required.
           </p>
 
-          <h2 className="text-2xl font-display font-medium text-primary mt-12 mb-6">6. Changes to This Policy</h2>
+          <h2 className="text-2xl font-display font-medium text-primary mt-12 mb-6">6. Your Rights</h2>
+          <p className="mb-6">
+            Under the DPDP Act, you have the right to access, correct, or delete your personal information held by us. You also have the right to withdraw your consent for data processing at any time. If you wish to exercise these rights or have any questions about our privacy practices, please contact our Data Protection Officer at contact@bhosaleandco.in.
+          </p>
+
+          <h2 className="text-2xl font-display font-medium text-primary mt-12 mb-6">7. Changes to This Policy</h2>
           <p className="mb-6">
             We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
           </p>
