@@ -1,13 +1,12 @@
 # Bhosale And Co — Financial Services Website
 
-> A modern, AI-powered website for **Bhosale And Co**, a trusted financial services firm based in Vasai East, Maharashtra. The website showcases services including loans, investments, tax filing, and more — built with React, TypeScript, Vite, and integrated with Google Gemini AI.
+> A modern website for **Bhosale And Co**, a trusted financial services firm based in Vasai East, Maharashtra. The website showcases services including loans, investments, tax filing, and more — built with React, TypeScript, and Vite.
 
 ---
 
 ## Table of Contents
 
 - [Project Overview](#project-overview)
-- [Live Demo](#live-demo)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
@@ -26,7 +25,7 @@
   - [Dev Dependencies](#dev-dependencies)
 - [Fonts & Design](#fonts--design)
 - [SEO & Metadata](#seo--metadata)
-- [AI Integration (Google Gemini)](#ai-integration-google-gemini)
+- [Gemini Integration](#gemini-integration)
 - [Deployment](#deployment)
   - [Deploying via Google AI Studio](#deploying-via-google-ai-studio)
   - [Deploying Manually (Cloud Run / Any Node Host)](#deploying-manually-cloud-run--any-node-host)
@@ -39,29 +38,21 @@
 
 **Bhosale And Co** is a Chartered Accountant (CA) and financial services firm established in **2013**, located in **Vasai East, Maharashtra, India**. This repository contains the source code for their official website — a single-page React application that presents their services, team, and contact information to prospective clients.
 
-The project was scaffolded using the [Google AI Studio repository template](https://github.com/google-gemini/aistudio-repository-template) and integrates **Google Gemini AI** to provide intelligent, interactive features such as a financial assistant chatbot or document Q&A.
-
----
-
-## Live Demo
-
-You can view the app running on AI Studio here:
-
-🔗 **[https://ai.studio/apps/7783b61e-1e72-4907-8bb5-ad5f7da296b2](https://ai.studio/apps/7783b61e-1e72-4907-8bb5-ad5f7da296b2)**
+I built this project from scratch to give Bhosale And Co a clean, professional digital presence. The site is designed to be fast, mobile-friendly, and easy to maintain.
 
 ---
 
 ## Features
 
-- **Company Services Showcase** — Highlights key offerings: loans, investments, income tax filing, GST compliance, and more.
-- **AI-Powered Financial Assistant** — Uses the Google Gemini API (`@google/genai`) to answer queries about financial services.
-- **Responsive Design** — Built with Tailwind CSS v4 for a fully mobile-first, responsive layout.
-- **Smooth Animations** — Uses the `motion` library (Framer Motion) for polished UI transitions and scroll animations.
-- **Multi-Page Navigation** — Client-side routing powered by `react-router-dom` v7.
+- **Services Showcase** — Highlights key offerings: loans, investments, income tax filing, GST compliance, and more.
+- **Financial Assistant Chatbot** — Integrated with the Google Gemini API to answer client queries about financial services directly on the site.
+- **Responsive Design** — Built with Tailwind CSS v4 for a fully mobile-first, responsive layout across all screen sizes.
+- **Smooth Animations** — Uses the `motion` library for polished UI transitions and scroll animations.
+- **Multi-Page Navigation** — Client-side routing powered by `react-router-dom` v7 for seamless page transitions.
 - **Custom Typography** — Uses Google Fonts: `Lato` (body) and `Playfair Display` (headings) for a professional, trustworthy appearance.
-- **SEO Optimised** — Meta title and description pre-configured for local search visibility in Vasai East.
+- **SEO Optimised** — Meta title and description configured for local search visibility in Vasai East.
 - **Type-Safe Codebase** — Written entirely in TypeScript (~98% of the codebase) for maintainability and reliability.
-- **Fast Development** — Powered by Vite 6 for near-instant hot module replacement and builds.
+- **Fast Development & Build** — Powered by Vite 6 for near-instant hot module replacement and optimised production builds.
 
 ---
 
@@ -76,7 +67,7 @@ You can view the app running on AI Studio here:
 | Routing | React Router DOM | ^7.13.1 |
 | Animation | Motion (Framer Motion) | ^12.23.24 |
 | Icons | Lucide React | ^0.546.0 |
-| AI Integration | Google GenAI SDK | ^1.29.0 |
+| Chatbot | Google GenAI SDK | ^1.29.0 |
 | Server (optional) | Express | ^4.21.2 |
 | Environment | dotenv | ^17.2.3 |
 
@@ -99,7 +90,7 @@ CA/
 └── README.md               # Project documentation (this file)
 ```
 
-> **Note:** The `src/` directory contains the full React component tree. It includes components for each section of the website (Hero, Services, About, Contact, etc.) as well as the Gemini AI integration logic.
+> **Note:** The `src/` directory contains the full React component tree, including components for each section of the website (Hero, Services, About, Contact, etc.) as well as the Gemini chatbot integration.
 
 ---
 
@@ -109,7 +100,7 @@ Before you begin, ensure you have the following installed on your machine:
 
 - **Node.js** — v18 or later recommended ([Download here](https://nodejs.org/))
 - **npm** — Comes bundled with Node.js
-- **A Google Gemini API Key** — Required for AI features ([Get yours at Google AI Studio](https://aistudio.google.com/app/apikey))
+- **A Google Gemini API Key** — Required for the chatbot feature ([Get yours at Google AI Studio](https://aistudio.google.com/app/apikey))
 
 To verify your Node.js and npm installation, run:
 
@@ -188,10 +179,10 @@ This serves the `dist/` folder locally so you can verify the production build be
 
 | Variable | Required | Description |
 |---|---|---|
-| `GEMINI_API_KEY` | ✅ Yes | Your Google Gemini API key. Used to authenticate all AI/LLM calls via `@google/genai`. Obtain it from [Google AI Studio](https://aistudio.google.com/app/apikey). |
-| `APP_URL` | ✅ Yes (in production) | The base URL where the app is hosted. Used for self-referential links, API endpoints, and OAuth callbacks when deployed to Cloud Run or similar platforms. Set to `http://localhost:3000` for local development. |
+| `GEMINI_API_KEY` | ✅ Yes | Your Google Gemini API key. Used to power the chatbot via `@google/genai`. Obtain it from [Google AI Studio](https://aistudio.google.com/app/apikey). |
+| `APP_URL` | ✅ Yes (in production) | The base URL where the app is hosted. Used for self-referential links, API endpoints, and callbacks when deployed. Set to `http://localhost:3000` for local development. |
 
-When deploying through **Google AI Studio**, both of these variables are automatically injected at runtime from your configured secrets — you do not need to manually set them in that environment.
+When deploying through **Google AI Studio**, both variables are automatically injected at runtime from your configured secrets — you do not need to manually set them in that environment.
 
 ---
 
@@ -218,11 +209,11 @@ All scripts are run via `npm run <script>`:
 | `react` | ^19.0.0 | Core UI library |
 | `react-dom` | ^19.0.0 | React DOM renderer |
 | `react-router-dom` | ^7.13.1 | Client-side routing and navigation |
-| `@google/genai` | ^1.29.0 | Official Google Generative AI SDK for Gemini model integration |
+| `@google/genai` | ^1.29.0 | Google Generative AI SDK for the Gemini chatbot |
 | `@tailwindcss/vite` | ^4.1.14 | Tailwind CSS Vite plugin for seamless CSS-in-build integration |
-| `motion` | ^12.23.24 | Animation library (Framer Motion successor) for UI transitions |
-| `lucide-react` | ^0.546.0 | Icon library with 1000+ clean SVG icons as React components |
-| `express` | ^4.21.2 | Optional Node.js HTTP server (used for server-side API proxying or SSR if needed) |
+| `motion` | ^12.23.24 | Animation library for UI transitions and scroll effects |
+| `lucide-react` | ^0.546.0 | Icon library with clean SVG icons as React components |
+| `express` | ^4.21.2 | Node.js HTTP server for API proxying when deployed |
 | `dotenv` | ^17.2.3 | Loads environment variables from `.env*` files into `process.env` |
 | `vite` | ^6.2.0 | Next-generation frontend build tool |
 
@@ -242,36 +233,36 @@ All scripts are run via `npm run <script>`:
 
 ## Fonts & Design
 
-The website uses two Google Fonts for a professional, finance-appropriate aesthetic:
+I chose two Google Fonts to give the site a professional, finance-appropriate look:
 
-- **Lato** (`300`, `400`, `700` — regular and italic) — Used for body text, descriptions, and UI elements. Chosen for its clean, readable sans-serif style.
-- **Playfair Display** (`400–900` — regular and italic) — Used for headings and section titles. Its elegant serif design conveys authority and trustworthiness appropriate for a financial firm.
+- **Lato** (`300`, `400`, `700` — regular and italic) — Used for body text, descriptions, and UI elements. Clean and highly readable.
+- **Playfair Display** (`400–900` — regular and italic) — Used for headings and section titles. The elegant serif style conveys trust and authority, which fits well for a financial firm.
 
-Both fonts are loaded via `<link>` tags in `index.html` with `preconnect` hints for optimal loading performance.
+Both fonts are loaded via `<link>` tags in `index.html` with `preconnect` hints to reduce font loading time.
 
 ---
 
 ## SEO & Metadata
 
-The `index.html` file includes key SEO metadata pre-configured for local discoverability:
+The `index.html` file includes SEO metadata configured for local discoverability in Vasai East:
 
 ```html
 <title>Bhosale And Co | Financial Services, Vasai East</title>
 <meta name="description" content="Bhosale And Co — trusted financial services in Vasai East since 2013. Loans, investments, tax filing, and more. Contact us today." />
 ```
 
-To further improve SEO, consider adding:
+Future improvements to consider:
 - Open Graph (`og:`) and Twitter Card meta tags for social media previews
 - A `sitemap.xml` for search engine crawling
-- Structured data (JSON-LD) for local business schema
+- Structured data (JSON-LD) for local business schema markup
 
 ---
 
-## AI Integration (Google Gemini)
+## Gemini Integration
 
-This project integrates Google's **Gemini** large language model via the `@google/genai` SDK. The AI key is loaded from the `GEMINI_API_KEY` environment variable at runtime.
+The site includes a financial assistant chatbot powered by Google's **Gemini** model via the `@google/genai` SDK. The API key is loaded securely from the `GEMINI_API_KEY` environment variable at runtime and never exposed to the client bundle.
 
-**Typical usage pattern in the codebase:**
+**Usage pattern:**
 
 ```typescript
 import { GoogleGenerativeAI } from "@google/genai";
@@ -284,9 +275,9 @@ const response = await result.response;
 const text = response.text();
 ```
 
-The AI feature is likely used to power an intelligent assistant that can answer questions about Bhosale And Co's services, help users understand financial products, or guide them through the contact process.
+The chatbot helps site visitors get quick answers about Bhosale And Co's services — things like loan eligibility, tax filing queries, or investment options — without needing to call the office.
 
-> **Security note:** The `GEMINI_API_KEY` should always remain server-side or within a secure environment. Never expose it in client-side JavaScript bundles.
+> **Security note:** Keep `GEMINI_API_KEY` server-side at all times. Never expose it in client-side JavaScript bundles.
 
 ---
 
@@ -294,12 +285,12 @@ The AI feature is likely used to power an intelligent assistant that can answer 
 
 ### Deploying via Google AI Studio
 
-This project was generated from the [Google AI Studio template](https://github.com/google-gemini/aistudio-repository-template) and is designed to run natively in AI Studio:
+This project is set up to deploy seamlessly through Google AI Studio:
 
 1. Push your code to GitHub.
 2. Connect the repository in [Google AI Studio](https://aistudio.google.com/).
-3. Configure your `GEMINI_API_KEY` and `APP_URL` in the **Secrets** panel.
-4. AI Studio will automatically build and deploy the app to **Google Cloud Run**, injecting all secrets at runtime.
+3. Configure `GEMINI_API_KEY` and `APP_URL` in the **Secrets** panel.
+4. AI Studio will build and deploy the app to **Google Cloud Run**, injecting all secrets at runtime automatically.
 
 ### Deploying Manually (Cloud Run / Any Node Host)
 
@@ -314,10 +305,10 @@ This project was generated from the [Google AI Studio template](https://github.c
    APP_URL=https://your-domain.com
    ```
 
-3. **Serve the `dist/` folder** using a static file server, or configure the Express server (`express` is already a dependency) to serve it:
+3. **Serve the `dist/` folder** via the included Express server:
 
    ```javascript
-   // server.js (example)
+   // server.js
    import express from "express";
    import path from "path";
 
@@ -329,13 +320,13 @@ This project was generated from the [Google AI Studio template](https://github.c
    app.listen(process.env.PORT || 8080);
    ```
 
-4. **Deploy** to your preferred platform: Google Cloud Run, Railway, Render, Fly.io, Vercel (with adapter), etc.
+4. **Deploy** to your preferred platform — Google Cloud Run, Railway, Render, Fly.io, or Vercel.
 
 ---
 
 ## Contributing
 
-Contributions, bug reports, and feature requests are welcome!
+If you'd like to contribute or suggest improvements:
 
 1. Fork the repository.
 2. Create a new branch: `git checkout -b feature/your-feature-name`
@@ -353,10 +344,10 @@ npm run lint
 
 ## License
 
-This project is **private** (`"private": true` in `package.json`) and not published to npm. All rights reserved by **Atharva Navlekar** and **Bhosale And Co**.
+This project is **private** (`"private": true` in `package.json`) and not published to npm. All rights reserved by **Atharva Navlekar**.
 
 ---
 
 <p align="center">
-  Built with ❤️ for <strong>Bhosale And Co</strong> — Trusted Financial Services since 2013, Vasai East, Maharashtra.
+  <strong>The.Navlekar</strong>
 </p>
